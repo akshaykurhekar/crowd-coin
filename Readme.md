@@ -1,6 +1,4 @@
 
-CampaignFactory
-### Contract deployed to 
-old- 0x07815D2893C499E00e88ac4191e5e7bAB0071536
-
-current - 0xBf081FD100111E46621f56F7066156583E28cd10
+## Smart contract
+    CampaignFactory
+    Campaign
