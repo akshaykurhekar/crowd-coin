@@ -3,8 +3,8 @@ const Web3 = require("web3");
 const CampaignFactory = require("./build/CampaignFactory.json");
 
 const provider = new HDWalletProvider(
-  "add here your 12 words key of metamask",
-  "add here your infura network link"
+  "add here your 12 words key of metamask", // replace
+  "add here your infura network link" // replace
 );
 
 const web3 = new Web3(provider);
