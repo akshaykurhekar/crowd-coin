@@ -5,14 +5,20 @@ import { Button, Table, Grid } from "semantic-ui-react";
 import Campaign from "../../../ethereum/campaign";
 import RequestRow from "../../../components/RequestRow";
 
-const RequestIndex = ({ address, request, requestCount, approversCount }) => {
+const RequestIndex = ({ address, requests, requestCount, approversCount }) => {
   const { Header, Row, HeaderCell, Body } = Table;
 
-  const renderRow = () => {
-    return request.map((request, index) => {
-      return <RequestRow key={index} id={index} request={request} approversCount={approversCount} address={address} />;
-    });
-  };
+  const renderRow = requests.map((request, index) => {
+    return (
+      <RequestRow
+        key={index}
+        id={index}
+        request={request}
+        approversCount={approversCount}
+        address={address}
+      />
+    );
+  });
 
   return (
     <Layout>
@@ -42,8 +48,9 @@ const RequestIndex = ({ address, request, requestCount, approversCount }) => {
             <HeaderCell>Finalize</HeaderCell>
           </Row>
         </Header>
-        <Body>{renderRow()}</Body>
+        <Body>{renderRow}</Body>
       </Table>
+      <p> Found {requestCount} total requests</p>
     </Layout>
   );
 };
@@ -56,15 +63,20 @@ RequestIndex.getInitialProps = async (props) => {
   const requestCount = await campaign.methods.getRequestCount().call();
   const approversCount = await campaign.methods.approversCount().call();
 
-  const request = await Promise.all(
-    Array(requestCount)
+  const requests = await Promise.all(
+    Array(parseInt(requestCount))
       .fill()
       .map((element, index) => {
         return campaign.methods.requests(index).call();
       })
   );
 
-  return { address, request, requestCount,approversCount };
+// const request = await requestCount.map((element, index) => {
+//         return campaign.methods.requests(index).call();
+//       })
+  
+//   console.log(request);
+  return { address, requests, requestCount, approversCount };
 };
 
 export default RequestIndex;
