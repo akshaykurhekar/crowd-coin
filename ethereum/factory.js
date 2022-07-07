@@ -3,7 +3,7 @@ import CampaignFactory from "./build/CampaignFactory.json";
 
 const instance = new web3.eth.Contract(
   JSON.parse(CampaignFactory.interface),
-  "xxxxxxxxxxxxxxx" //replace with address of your deployed smart contract
+  "0xBf081FD100111E46621f56F7066156583E28cd10" //replace with address of your deployed smart contract
 );
 
 export default instance;

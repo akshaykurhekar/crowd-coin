@@ -3,9 +3,9 @@ const Web3 = require("web3");
 const CampaignFactory = require("./build/CampaignFactory.json");
 
 const provider = new HDWalletProvider(
-  "add here your 12 words key of metamask", // replace
-  "add here your infura network link" // replace
-);
+    "horse neither robot throw begin luggage depth fragile bulb artist august gate",
+    "https://ropsten.infura.io/v3/cc2b3d7b2a4642baa7f5ac5526a1dfc5"
+  );
 
 const web3 = new Web3(provider);
 
